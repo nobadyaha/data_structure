@@ -9,7 +9,7 @@ public class TestSort {
     //完全随机
     public static int[] gettotalRandom(){
         Random random=new Random();
-        int[] arr=new int[1000];
+        int[] arr=new int[10000];
         for(int i=0;i<arr.length;i++){
             arr[i]=random.nextInt(1000);
         }
@@ -18,7 +18,7 @@ public class TestSort {
     //大致有序
     public static int[] getMaybeSorted(){
         Random random=new Random();
-        int[] arr=new int[1000];
+        int[] arr=new int[10000];
         for(int i=0;i<arr.length;i++){
             arr[i]=i+random.nextInt(10);
         }
@@ -36,7 +36,7 @@ public class TestSort {
     public static void main(String[] args) {
         //int[] arr1=gettotalRandom();
         //int[] arr1=getMaybeSorted();
-        int[] arr1=getLittleVarianceSorted();
+       int[] arr1=getLittleVarianceSorted();
         int[] arr2= Arrays.copyOf(arr1,arr1.length);
         int[] arr3= Arrays.copyOf(arr1,arr1.length);
         int[] arr4= Arrays.copyOf(arr1,arr1.length);
@@ -44,6 +44,9 @@ public class TestSort {
         int[] arr6= Arrays.copyOf(arr1,arr1.length);
         int[] arr7= Arrays.copyOf(arr1,arr1.length);
         int[] arr8= Arrays.copyOf(arr1,arr1.length);
+        int[] arr9= Arrays.copyOf(arr1,arr1.length);
+        int[] arr10= Arrays.copyOf(arr1,arr1.length);
+        int[] arr11= Arrays.copyOf(arr1,arr1.length);
         testSelectionSort(arr1);
         testBubbleSort(arr2);
         testInsertionSort(arr3);
@@ -52,6 +55,31 @@ public class TestSort {
         testHeapSort(arr6);
         testQuickSort01(arr7);
         testQuickSort02(arr8);
+        testQuickSort03(arr9);
+        teatCOuntSort(arr10);
+        testBucketSort(arr11);
+    }
+
+    private static void testBucketSort(int[] arr11) {
+        long startTime = System.currentTimeMillis();
+        BucketSort.bucketSort(arr11);
+        long endTime = System.currentTimeMillis();
+        System.out.println("bucketSort time cost=" + (endTime - startTime));
+    }
+
+    private static void teatCOuntSort(int[] arr10) {
+        long startTime = System.currentTimeMillis();
+      CountSort.countSort(arr10);
+        long endTime = System.currentTimeMillis();
+        System.out.println("countSort time cost=" + (endTime - startTime));
+    }
+
+    private static void testQuickSort03(int[] arr9) {
+        long startTime = System.currentTimeMillis();
+        QuickSort03.quickSort03(arr9,0,arr9.length-1);
+        long endTime = System.currentTimeMillis();
+        System.out.println("quickSort03 time cost=" + (endTime - startTime));
+
     }
 
     private static void testQuickSort02(int[] arr8) {

@@ -15,11 +15,11 @@ public class QuickSort03 {
         System.out.println(Arrays.toString(arr));
     }
 
-    private static void quickSort03(int[] arr, int l, int r) {
+    public static void quickSort03(int[] arr, int l, int r) {
         if(l>=r){
             return;
         }
-        swap(arr,1,(int)(Math.random()*(r-l+1)+l));
+        //swap(arr,1,(int)(Math.random()*(r-l+1)+l));这句话是引发错误的原因
         int v=arr[l];
         int lt=l;
         int gt=r+1;
@@ -29,8 +29,16 @@ public class QuickSort03 {
                 swap(arr,lt+1,i);
                 lt++;
                 i++;
+            }else if(arr[i]>v){
+                swap(arr,i,gt-1);
+                gt--;
+            }else{
+                i++;
             }
         }
+        swap(arr,l,lt);
+        quickSort03(arr,gt,r);
+        quickSort03(arr,l,lt);
     }
 
     private static void swap(int[] arr, int i, int j) {
